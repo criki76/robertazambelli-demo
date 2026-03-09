@@ -896,13 +896,104 @@
         display: flex;
       }
 
-      .hero-text {
-        padding: 7rem 1.4rem 4rem;
+      /* ---- HERO MOBILE: fullscreen con testo sovrapposto ---- */
+      #hero {
+        display: block;
+        position: relative;
+        min-height: 100svh;
       }
 
-      .hero-features {
-        gap: 1rem;
+      /* la foto diventa sfondo fullscreen */
+      .hero-visual {
+        position: absolute;
+        inset: 0;
+        min-height: unset;
+        padding: 0;
+        z-index: 0;
       }
+
+      .hero-photo-wrap {
+        position: absolute;
+        inset: 0;
+        min-height: unset;
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      /* gradiente scuro dal basso per leggibilità testo */
+      .hero-photo-wrap::after {
+        background:
+          linear-gradient(to top, rgba(15, 10, 6, 0.82) 0%, rgba(15, 10, 6, 0.35) 55%, rgba(15, 10, 6, 0.18) 100%);
+      }
+
+      /* testo sovrapposto sopra la foto */
+      .hero-text {
+        position: relative;
+        z-index: 2;
+        min-height: 100svh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 0 1.6rem 3rem;
+        background: none;
+      }
+
+      /* testi bianchi sull'immagine */
+      .hero-eyebrow {
+        color: rgba(212, 170, 125, 0.9);
+      }
+
+      .hero-title {
+        color: #fdfaf6;
+        font-size: clamp(3rem, 11vw, 4rem);
+      }
+
+      .hero-title em {
+        color: var(--gold-light);
+      }
+
+      .hero-subtitle {
+        color: rgba(253, 250, 246, 0.80);
+        max-width: 100%;
+      }
+
+      .btn-secondary {
+        color: rgba(253, 250, 246, 0.75);
+        border-bottom-color: var(--gold-light);
+      }
+
+      .btn-secondary:hover {
+        color: var(--gold-light);
+      }
+
+      .hero-feature small {
+        color: var(--gold-light);
+      }
+
+      .hero-feature strong {
+        color: rgba(253, 250, 246, 0.90);
+      }
+
+      /* nascondo la hero-card: il testo è già nell'overlay */
+      .hero-card {
+        display: none;
+      }
+
+      /* features orizzontali compatte */
+      .hero-features {
+        gap: 1.4rem;
+        margin-top: 2rem;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 0.2rem;
+      }
+
+      .hero-feature {
+        min-width: 120px;
+        flex-shrink: 0;
+      }
+
+      /* ---- FINE HERO MOBILE ---- */
 
       .trust-grid,
       .services-grid,
@@ -915,7 +1006,6 @@
         padding: 5rem 0;
       }
 
-      .hero-card,
       .about-card,
       .final-cta-card {
         padding: 1.8rem;
@@ -928,7 +1018,7 @@
       }
 
       .hero-title {
-        font-size: 3rem;
+        font-size: clamp(2.8rem, 10vw, 3.4rem);
       }
 
       .hero-card h2,
@@ -950,18 +1040,6 @@
       .cta-buttons {
         flex-direction: column;
         align-items: stretch;
-      }
-
-      .hero-visual {
-        min-height: 560px;
-      }
-
-      .hero-photo-wrap {
-        min-height: 560px;
-      }
-
-      .hero-image {
-        object-position: center 28%;
       }
     }
   </style>
@@ -1155,7 +1233,7 @@
   <!-- MOXA -->
   <article class="service-card">
     <img
-      src="moxa.jpg"
+      src="Moxa.jpg"
       alt="Tecnica della Moxa"
     />
     <div class="service-content">
